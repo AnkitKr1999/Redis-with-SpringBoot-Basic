@@ -2,6 +2,7 @@ package com.javatechie.springdataredisexample.repository;
 
 import com.javatechie.springdataredisexample.entity.Product;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Repository;
 
@@ -9,6 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Repository
+@EnableCaching
 public class ProductDao {
 
     @Autowired
@@ -22,6 +24,7 @@ public class ProductDao {
         return template.opsForHash().values(HASH_KEY);
     }
     public Product findProductById(int id){
+        System.out.println("called findProductById() from DB");
         return (Product) template.opsForHash().get(HASH_KEY,id);
     }
     public String deleteProduct(int id){

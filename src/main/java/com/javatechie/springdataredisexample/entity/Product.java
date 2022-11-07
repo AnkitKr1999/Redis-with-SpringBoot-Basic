@@ -12,6 +12,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 @AllArgsConstructor
 @RedisHash("Product")
+// redis requires class to be serializable
 public class Product implements Serializable {
     @Id
     private int id;

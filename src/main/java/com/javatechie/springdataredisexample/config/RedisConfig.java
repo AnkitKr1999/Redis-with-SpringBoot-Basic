@@ -25,7 +25,6 @@ public class RedisConfig {
     }
 
 //     to access server from application
-//    try changing Object = ?
     @Bean
     @Primary
     public RedisTemplate<String,Object> redisTemplate(){
@@ -33,7 +32,7 @@ public class RedisConfig {
 
      template.setConnectionFactory(connectionFactory());
      template.setKeySerializer(new StringRedisSerializer());
-     template.setHashKeySerializer(new StringRedisSerializer());
+//     template.setHashKeySerializer(new StringRedisSerializer());
      template.setHashKeySerializer(new JdkSerializationRedisSerializer());
      template.setValueSerializer(new JdkSerializationRedisSerializer());
      template.setEnableTransactionSupport(true);
